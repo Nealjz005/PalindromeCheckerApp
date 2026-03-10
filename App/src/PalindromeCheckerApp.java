@@ -1,53 +1,28 @@
-import java.util.Scanner;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Queue;
+import java.util.LinkedList;
 
-public class PalindromeCheckerApp {
-    public static void reverse_and_check(String word){
-        boolean status = true;
-
-        char arr[] = word.toCharArray();
-        //reverse
-
-        Deque<Character> deque = new ArrayDeque<>();
-        for(int i = 0;i<word.length();i++)
-        {
-            deque.offer(arr[i]);
-
-        }
-        //stack  created...and queue also created
-
-
-        //lets check the dequeue and pop
-        int index =0;
-        while(index<word.length()/2)
-        {
-            if(deque.pollFirst() == deque.pollLast())
-            {
-                index++;
-            }
-            else
-            {
-                status =false;
-                break;
-            }
-
-        }
-
-        //printing the status
-        System.out.println("Is it a Palindrome?"+status);
-    }
-
+public class UseCase8PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        Scanner s1 = new Scanner(System.in);
+        String input = "level";
 
-        System.out.print("Input text: ");
-        String name = s1.next();
+        LinkedList<Character> list = new LinkedList<>();
 
-        //function call
-        reverse_and_check(name);
+        for (char c : input.toCharArray()) {
+            list.add(c);
+        }
+
+        boolean isPalindrome = true;
+
+        while (list.size() > 1) {
+            if (list.removeFirst() != list.removeLast()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+
     }
 }
